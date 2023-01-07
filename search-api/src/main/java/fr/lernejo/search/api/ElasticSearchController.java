@@ -29,6 +29,7 @@ public class ElasticSearchController {
         this.client.search(rqst, RequestOptions.DEFAULT)
             .getHits()
             .forEach(hit -> res.add(hit.getSourceAsMap()));
+
         return res;
     }
 }
