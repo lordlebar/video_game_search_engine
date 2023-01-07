@@ -23,12 +23,14 @@ public class Launcher {
                 List<Game> games = Arrays.asList(map.readValue(Paths.get(args[0]).toFile(), Game[].class));
                 RabbitTemplate template = springContext.getBean(RabbitTemplate.class);
                 for (Game game : games) {
+
 //                    template.setMessageConverter(new Jackson2JsonMessageConverter());
 //                    template.convertAndSend("", "game_info", game, msg -> {
 //                        msg.getMessageProperties().setContentType(MessageProperties.CONTENT_TYPE_JSON);
 //                        msg.getMessageProperties().setHeader("game_id", game.id());
 //                        return msg;
 //                    });
+
                     template.setMessageConverter(new Jackson2JsonMessageConverter());
                     template.convertAndSend("", "game_info", game,m -> { m.getMessageProperties().getHeaders().put("game_id", game.id());return m; });
                 }

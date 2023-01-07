@@ -10,7 +10,6 @@ class HelloController {
     HelloMessage sayHello() {
         return new HelloMessage("Hello random wanderer of the internetS (plural).");
     }
-
     record HelloMessage(String message) {
     }
 }
