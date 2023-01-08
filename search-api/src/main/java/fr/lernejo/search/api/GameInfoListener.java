@@ -1,5 +1,7 @@
 package fr.lernejo.search.api;
 
+import java.io.IOException;
+
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -7,8 +9,6 @@ import org.elasticsearch.xcontent.XContentType;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 
 @Component
 public class GameInfoListener {

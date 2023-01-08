@@ -16,12 +16,10 @@ import org.springframework.context.annotation.Configuration;
 public class ElasticSearchConfiguration {
 
     @Bean
-    public RestHighLevelClient client(
-        @Value("${elasticsearch.host:localhost}") String address,
-        @Value("${elasticsearch.port:9200}") int port,
-        @Value("${elasticsearch.username:elastic}") String username,
-        @Value("${elasticsearch.password:admin}") String pswd)
-    {
+    public RestHighLevelClient client (@Value("${elasticsearch.host:localhost}") String address,
+                                       @Value("${elasticsearch.port:9200}") int port,
+                                       @Value("${elasticsearch.username:elastic}") String username,
+                                       @Value("${elasticsearch.password:admin}") String pswd){
         final CredentialsProvider credentials = new BasicCredentialsProvider();
         credentials.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(username, pswd));
         RestClientBuilder builder = RestClient.builder(new HttpHost(address, port))
